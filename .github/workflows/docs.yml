@@ -1,0 +1,49 @@
+name: Documentation CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install markdownlint
+        run: npm install -g markdownlint-cli
+
+      - name: Lint markdown
+        run: |
+          markdownlint "**/*.md" \
+            --ignore node_modules \
+            --ignore .git
+
+  links:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check links with lychee
+        uses: lycheeverse/lychee-action@v1
+        with:
+          args: "--accept-all --no-progress './**/*.md'"
+          fail: true
+
+  spellcheck:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run spell check
+        uses: streetsidesoftware/cspell-action@v3
+        with:
+          files: "**/*.md"
+          incremental: true

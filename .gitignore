@@ -1,0 +1,36 @@
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Backups
+backups/
+*.backup
+*.bak
+
+# Temporary
+tmp/
+temp/
+*.tmp
+
+# Build
+dist/
+build/
+
+# Dependencies
+node_modules/

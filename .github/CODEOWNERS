@@ -1,0 +1,9 @@
+# Default reviewers
+* @IvanWeissVanDerPol
+* @jonatan-verdun
+
+# Documentation
+docs/* @IvanWeissVanDerPol
+
+# Operations
+operations/* @IvanWeissVanDerPol @jonatan-verdun
